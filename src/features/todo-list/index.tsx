@@ -113,7 +113,7 @@ const ToDoList = () => {
     }
     setTitle(todoItem[0]?.group);
     setSelectedLabel(todoItem[0]?.label);
-  }, [todoItem]);
+  }, []);
 
   return (
     <div className="h-[100vh] flex flex-col justify-between">
