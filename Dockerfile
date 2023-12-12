@@ -1,14 +1,14 @@
-FROM node:18-slim AS builder
+FROM node:14-alpine AS builder
 
 WORKDIR /app
 
-COPY . .
+COPY package*.json ./
 
 RUN npm install
 
-RUN npm run build
+COPY . .
 
-COPY package*.json ./
+RUN npm run build
 
 EXPOSE 3000
 
