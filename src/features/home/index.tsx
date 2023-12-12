@@ -76,7 +76,7 @@ const Home = () => {
         </svg>
       </div>
       {groupedTodos.length === 0 ? (
-        <div>
+        <div className="w-full flex flex-col justify-center items-center">
           <Image
             className="pt-[280px]"
             src="/assets/Home.png"
