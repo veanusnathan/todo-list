@@ -41,12 +41,14 @@ const Welcome = () => {
           <h1>Everyday.</h1>
         </div>
       </div>
-      <button
-        onClick={() => push("/home")}
-        className="bg-white py-4 px-16 rounded-[100px] absolute left-[122px] top-[783px]"
-      >
-        <p className="">Let&#39;s Go</p>
-      </button>
+      <div className="pt-[221px] flex justify-center">
+        <button
+          onClick={() => push("/home")}
+          className="bg-white rounded-[100px]"
+        >
+          <p className="py-4 px-16">Let&#39;s Go</p>
+        </button>
+      </div>
     </div>
   );
 };
