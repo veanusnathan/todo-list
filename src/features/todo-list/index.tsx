@@ -109,7 +109,9 @@ const ToDoList = () => {
 
   useEffect(() => {
     fetchTodos();
-  }, []);
+    setTitle(todoItem[0].group);
+    setSelectedLabel(todoItem[0].label);
+  }, [todoItem]);
 
   return (
     <div className="h-[100vh] flex flex-col justify-between">
@@ -134,6 +136,7 @@ const ToDoList = () => {
           onChange={(e) => setTitle(e.target.value)}
           className="text-2xl font-medium outline-none placeholder:text-black"
           placeholder="Title"
+          defaultValue={title}
         />
         <div className="max-h-[500px]">
           <div className="h-full space-y-4 pb-4">

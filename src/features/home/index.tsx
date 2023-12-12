@@ -112,7 +112,7 @@ const Home = () => {
         </div>
       ) : (
         <div className="pt-[33px] mx-4 flex flex-col space-y-[18px]">
-          {todoItem.map((val, idx) => {
+          {groupedTodos.map((val, idx) => {
             return (
               <button
                 className={`space-y-[14px] ${
