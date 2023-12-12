@@ -108,9 +108,11 @@ const ToDoList = () => {
   });
 
   useEffect(() => {
-    fetchTodos();
-    setTitle(todoItem[0].group);
-    setSelectedLabel(todoItem[0].label);
+    if (todoItem.length === 0) {
+      fetchTodos();
+    }
+    setTitle(todoItem[0]?.group);
+    setSelectedLabel(todoItem[0]?.label);
   }, [todoItem]);
 
   return (
