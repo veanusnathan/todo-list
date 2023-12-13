@@ -34,9 +34,9 @@ const ToDoList = () => {
     const newToDos: ToDoItem = {
       id: (Math.random() * 100).toString(),
       body: "",
-      label: "",
+      label: selectedLabel,
       isDone: false,
-      group: title || "",
+      group: title,
     };
 
     setToDoItem((prevTodos) => {
@@ -108,9 +108,7 @@ const ToDoList = () => {
   });
 
   useEffect(() => {
-    if (todoItem.length === 0) {
-      fetchTodos();
-    }
+    fetchTodos();
     setTitle(todoItem[0]?.group);
     setSelectedLabel(todoItem[0]?.label);
   }, []);
@@ -142,7 +140,7 @@ const ToDoList = () => {
         />
         <div className="max-h-[500px]">
           <div className="h-full space-y-4 pb-4">
-            {todoItem.map((val: ToDoItem) => {
+            {showedTodos[0]?.todos.map((val: ToDoItem) => {
               return (
                 <div key={val.id} className="flex space-x-3">
                   <button onClick={() => onCheckTodos(val.id)}>

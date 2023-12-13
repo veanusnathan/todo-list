@@ -111,30 +111,68 @@ const Home = () => {
           </div>
         </div>
       ) : (
-        <div className="pt-[33px] mx-4 flex flex-col space-y-[18px]">
-          {groupedTodos.map((val, idx) => {
-            return (
-              <button
-                className={`space-y-[14px] ${
-                  val.label === "Finance"
-                    ? "bg-[#F3E4F6]"
-                    : val.label === "Other"
-                    ? "bg-[#E5FFE6]"
-                    : val.label === "Personal"
-                    ? "bg-[#FFF6E7]"
-                    : "bg-[#1919]"
-                } rounded-[16px] p-4`}
-                onClick={() => push(`/todo-list?group=${val.group}`)}
-                key={idx}
-              >
-                <p className="flex justify-start text-xl">{val.group}</p>
-                <p className="flex justify-start bg-black text-white text-[10px] font-medium px-[7px] py-[3px] rounded-full w-fit">
-                  {val.label}
-                </p>
-              </button>
-            );
-          })}
-        </div>
+        <>
+          <div className="pt-[33px] mx-4 flex flex-col space-y-[18px]">
+            {groupedTodos.map((val, idx) => {
+              return (
+                <button
+                  className={`space-y-[14px] ${
+                    val.label === "Finance"
+                      ? "bg-[#F3E4F6]"
+                      : val.label === "Other"
+                      ? "bg-[#E5FFE6]"
+                      : val.label === "Personal"
+                      ? "bg-[#FFF6E7]"
+                      : "bg-[#1919]"
+                  } rounded-[16px] p-4`}
+                  onClick={() => push(`/todo-list?group=${val.group}`)}
+                  key={idx}
+                >
+                  <p className="flex justify-start text-xl">{val.group}</p>
+                  <p className="flex justify-start bg-black text-white text-[10px] font-medium px-[7px] py-[3px] rounded-full w-fit">
+                    {val.label}
+                  </p>
+                </button>
+              );
+            })}
+          </div>
+          <button
+            onClick={() => push("/todo-list")}
+            className="absolute bottom-8 right-8"
+          >
+            <svg
+              width="65"
+              height="65"
+              viewBox="0 0 65 65"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g id="Group 55">
+                <path
+                  id="Subtract"
+                  d="M65 32.5C65 50.4493 50.4493 65 32.5 65C14.5507 65 0 50.4493 0 32.5C0 14.5507 14.5507 0 32.5 0C50.4493 0 65 14.5507 65 32.5Z"
+                  fill="black"
+                />
+                <g id="Group 54">
+                  <path
+                    id="Line 48"
+                    d="M33 22V42"
+                    stroke="white"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                  />
+                  <path
+                    id="Line 49"
+                    d="M42.9999 32.0024L22.9999 32.0024"
+                    stroke="white"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                  />
+                </g>
+              </g>
+            </svg>
+          </button>
+        </>
       )}
     </div>
   );
