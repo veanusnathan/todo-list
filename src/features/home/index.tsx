@@ -1,12 +1,40 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useToDosStore } from "@/stores";
+import { GroupToDos, useToDosStore } from "@/stores";
 import { uuid } from "uuidv4";
 import ToDoCard from "./todoCard";
+import { useEffect } from "react";
 
 const Home = () => {
   const { push } = useRouter();
-  const { allToDos } = useToDosStore();
+  const { allToDos, updateAllToDos } = useToDosStore();
+
+  function filterCompletedToDosAndGroups(groups: GroupToDos[]) {
+    if (groups) {
+      const newTodos = groups.filter((val) => {
+        return val.toDos.length !== 0;
+      });
+      newTodos.forEach((val, idx) => {
+        const numberOfTask = val.toDos.length;
+        let numberOfTaskDone = 0;
+        for (let i = 0; i <= numberOfTask; i++) {
+          if (val.toDos[i]?.isDone === true) {
+            numberOfTaskDone += 1;
+          }
+        }
+        if (numberOfTask === numberOfTaskDone) {
+          newTodos.splice(idx, 1);
+        }
+      });
+      return updateAllToDos(newTodos);
+    } else {
+      return;
+    }
+  }
+
+  useEffect(() => {
+    filterCompletedToDosAndGroups(allToDos);
+  }, []);
 
   return (
     <div className="h-[100vh] relative">
