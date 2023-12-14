@@ -11,19 +11,12 @@ export enum LabelList {
   OTHER = "Other",
 }
 
-const ToDoList = ({
-  title,
-  label,
-}: {
-  id: string;
-  title: string;
-  label: string;
-}) => {
+const ToDoList = () => {
   const { push } = useRouter();
   const groupId = useSearchParams().get("id");
   const { allToDos, updateAllToDos } = useToDosStore();
-  const [editedTitle, setEditedTitle] = useState(title);
-  const [selectedLabel, setSelectedLabel] = useState(label);
+  const [editedTitle, setEditedTitle] = useState("");
+  const [selectedLabel, setSelectedLabel] = useState("");
   const [editingId, setEditingId] = useState<string>("");
   const [todoInput, setTodoInput] = useState<string>("");
   const [todoItem, setTodoItem] = useState<ToDos[]>([]);
