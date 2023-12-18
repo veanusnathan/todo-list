@@ -9,7 +9,7 @@ const Home = () => {
   const { push } = useRouter();
   const { allToDos, updateAllToDos } = useToDosStore();
 
-  function filterCompletedToDosAndGroups(groups: GroupToDos[]) {
+  function filterCompletedToDosGroups(groups: GroupToDos[]) {
     if (groups) {
       const newTodos = groups.filter((val) => {
         return val.toDos.length !== 0;
@@ -19,6 +19,7 @@ const Home = () => {
         let numberOfTaskDone = 0;
         for (let i = 0; i <= numberOfTask; i++) {
           if (val.toDos[i]?.isDone === true) {
+            newTodos[idx].toDos.splice(i, 1);
             numberOfTaskDone += 1;
           }
         }
@@ -33,7 +34,7 @@ const Home = () => {
   }
 
   useEffect(() => {
-    filterCompletedToDosAndGroups(allToDos);
+    filterCompletedToDosGroups(allToDos);
   }, []);
 
   return (
